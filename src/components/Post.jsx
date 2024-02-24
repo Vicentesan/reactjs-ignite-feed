@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
 import styles from './Post.module.css'
 
@@ -21,6 +22,7 @@ export function Post(props) {
 
         <time dateTime={props.date}>
           {formatDistanceToNow(props.date, {
+            locale: ptBR,
             addSuffix: true,
           })}
         </time>
