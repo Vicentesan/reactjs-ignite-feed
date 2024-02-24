@@ -6,6 +6,48 @@ import styles from './app.module.css'
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      picture: 'https://github.com/Muvias.png',
+      name: 'Vinicius Muvias',
+      role: 'Dev Front-End',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      { type: 'link', content: '👉 jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2024-02-22T20:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      picture: 'https://github.com/ruanjkz.png',
+      name: 'Ruan',
+      role: 'Dev Front-End',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala pessoal 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Finalmente finalizei meu novo site/portfólio. Foi um baita desafio criar todo o design e codar na unha, mas consegui 💪🏻',
+      },
+      {
+        type: 'link',
+        content: 'Acesse e deixe seu feedback 👉 devonlane.design',
+      },
+    ],
+    publishedAt: new Date('2024-02-20T23:00:00'),
+  },
+]
+
 export function App() {
   return (
     <div>
@@ -23,15 +65,14 @@ export function App() {
         />
 
         <main>
-          <Post
-            author={{
-              name: 'Leslie Alexander',
-              role: 'UI/UX Designer',
-              picture:
-                'https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?q=50',
-            }}
-            publishedAt={new Date()}
-          />
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+          ))}
         </main>
       </div>
     </div>
