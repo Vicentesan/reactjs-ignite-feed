@@ -28,7 +28,7 @@ export function App() {
               name: 'Leslie Alexander',
               role: 'UI/UX Designer',
               picture:
-                'https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=50',
+                'https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?q=50',
             }}
             publishedAt={new Date()}
           />
