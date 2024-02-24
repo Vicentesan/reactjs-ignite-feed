@@ -27,7 +27,7 @@ export function App() {
               avatar:
                 'https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=50',
             }}
-            date={new Date()}
+            publishedAt={new Date()}
           />
         </main>
       </div>
