@@ -3,6 +3,7 @@ import { format, formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 import styles from './Post.module.css'
+import { Avatar } from './Avatar'
 
 export function Post(props) {
   const publishedDateFormatted = format(
@@ -22,11 +23,7 @@ export function Post(props) {
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img
-            className={styles.avatar}
-            src={props.author.avatar}
-            alt={`${props.name} Profile Picture`}
-          />
+          <Avatar author={props.author} />
 
           <div className={styles.authorInfo}>
             <strong>{props.author.name}</strong>
@@ -71,7 +68,7 @@ export function Post(props) {
         <Comment
           author={{
             name: 'Vicente Sanchez',
-            avatar: 'https://github.com/Vicentesan.png',
+            picture: 'https://github.com/Vicentesan.png',
           }}
           publishedAt={new Date()}
           content="Ficou muito top! Parabéns!"

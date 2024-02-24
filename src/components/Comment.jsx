@@ -3,6 +3,7 @@ import { ptBR } from 'date-fns/locale'
 
 import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
+import { Avatar } from './Avatar'
 
 export function Comment(props) {
   const publishedDateFormatted = format(
@@ -20,11 +21,7 @@ export function Comment(props) {
 
   return (
     <div className={styles.comment}>
-      <img
-        className={styles.avatar}
-        src={props.author.avatar}
-        alt={`${props.author.name} Profile Picture`}
-      />
+      <Avatar hasBorder={false} author={props.author} />
 
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>

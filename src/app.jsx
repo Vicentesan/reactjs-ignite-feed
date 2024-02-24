@@ -13,10 +13,13 @@ export function App() {
 
       <div className={styles.wrapper}>
         <SideBar
-          image="https://github.com/Vicentesan.png"
-          cover="https://images.unsplash.com/photo-1707310042819-5d00accd7d81?q=50"
-          name="Vicente Sanchez"
-          role="Backend Developer"
+          author={{
+            name: 'Vicente Sanchez',
+            role: 'Backend Developer',
+            picture: 'https://github.com/Vicentesan.png',
+            cover:
+              'https://images.unsplash.com/photo-1707310042819-5d00accd7d81?q=50',
+          }}
         />
 
         <main>
@@ -24,7 +27,7 @@ export function App() {
             author={{
               name: 'Leslie Alexander',
               role: 'UI/UX Designer',
-              avatar:
+              picture:
                 'https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=50',
             }}
             publishedAt={new Date()}
