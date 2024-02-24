@@ -1,8 +1,10 @@
 import { Header } from './components/Header'
 import { SideBar } from './components/SideBar'
+import { Post } from './components/Post'
+
+import styles from './app.module.css'
 
 import './global.css'
-import styles from './app.module.css'
 
 export function App() {
   return (
@@ -16,6 +18,18 @@ export function App() {
           name="Vicente Sanchez"
           role="Backend Developer"
         />
+
+        <main>
+          <Post
+            author={{
+              name: 'Leslie Alexander',
+              role: 'UI/UX Designer',
+              avatar:
+                'https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=50',
+            }}
+            date={new Date()}
+          />
+        </main>
       </div>
     </div>
   )
