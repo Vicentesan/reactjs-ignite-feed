@@ -1,3 +1,4 @@
+import { Comment } from './Comment'
 import { format, formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
@@ -65,6 +66,18 @@ export function Post(props) {
           <button type="submit">Publicar</button>
         </footer>
       </form>
+
+      <div className={styles.commentList}>
+        <Comment
+          author={{
+            name: 'Vicente Sanchez',
+            avatar: 'https://github.com/Vicentesan.png',
+          }}
+          publishedAt={new Date()}
+          content="Ficou muito top! Parabéns!"
+          likes="5"
+        />
+      </div>
     </article>
   )
 }
