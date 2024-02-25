@@ -5,30 +5,30 @@ import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
 import { Avatar } from './Avatar'
 
-export function Comment(props) {
+export function Comment({ content, author, publishedAt, likes }) {
   const publishedDateFormatted = format(
-    props.publishedAt,
+    publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
     {
       locale: ptBR,
     },
   )
 
-  const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
     addSuffix: true,
   })
 
   return (
     <div className={styles.comment}>
-      <Avatar hasBorder={false} author={props.author} />
+      <Avatar hasBorder={false} author={author} />
 
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
-              <strong>{props.author.name}</strong>
-              <time title={publishedDateFormatted} dateTime={props.publishedAt}>
+              <strong>{author.name}</strong>
+              <time title={publishedDateFormatted} dateTime={publishedAt}>
                 {publishedDateRelativeToNow}
               </time>
             </div>
@@ -38,13 +38,13 @@ export function Comment(props) {
             </button>
           </header>
 
-          <p>{props.content}</p>
+          <p>{content}</p>
         </div>
 
         <footer>
           <button>
             <ThumbsUp size={20} />
-            Aplaudir <span>{props.likes}</span>
+            Aplaudir <span>{likes}</span>
           </button>
         </footer>
       </div>
