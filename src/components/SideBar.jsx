@@ -4,8 +4,6 @@ import { Avatar } from './Avatar'
 import styles from './SideBar.module.css'
 
 export function SideBar(props) {
-  console.log(props)
-
   return (
     <aside className={styles.sidebar}>
       <img
