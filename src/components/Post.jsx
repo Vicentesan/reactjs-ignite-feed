@@ -17,7 +17,7 @@ export function Post({ author, content, publishedAt }) {
         picture: faker.image.avatar(),
       },
       content: faker.lorem.text(),
-      likes: '20',
+      likes: faker.number.int({ min: 1, max: 520 }),
       publishedAt: faker.date.recent(),
     },
   ])
@@ -95,12 +95,31 @@ export function Post({ author, content, publishedAt }) {
 
       <div className={styles.content}>
         {content.map((line) => {
+          function getLink(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g
+            const hashtagRegex = /#(\w+)/g
+
+            const url = text.match(urlRegex)
+            const hashtag = text.match(hashtagRegex)
+
+            return {
+              url,
+              hashtag,
+            }
+          }
+
           if (line.type === 'paragraph')
             return <p key={line.content}>{line.content}</p>
           if (line.type === 'link')
             return (
               <p key={line.content}>
-                <a href="#">{line.content}</a>
+                <a
+                  href={
+                    getLink(line.content).url || getLink(line.content).hashtag
+                  }
+                >
+                  {line.content}
+                </a>
               </p>
             )
           return null
