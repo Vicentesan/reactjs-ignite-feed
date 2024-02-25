@@ -5,7 +5,13 @@ import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
 import { Avatar } from './Avatar'
 
-export function Comment({ content, author, publishedAt, likes }) {
+export function Comment({
+  content,
+  author,
+  publishedAt,
+  likes,
+  onDeleteComment,
+}) {
   const publishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -18,6 +24,10 @@ export function Comment({ content, author, publishedAt, likes }) {
     locale: ptBR,
     addSuffix: true,
   })
+
+  function handleDeleteComment() {
+    onDeleteComment(content)
+  }
 
   return (
     <div className={styles.comment}>
@@ -33,7 +43,7 @@ export function Comment({ content, author, publishedAt, likes }) {
               </time>
             </div>
 
-            <button title="Deletar comentário">
+            <button onClick={handleDeleteComment} title="Deletar comentário">
               <Trash size={24} />
             </button>
           </header>
