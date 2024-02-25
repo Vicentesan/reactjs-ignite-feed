@@ -11,7 +11,7 @@ import styles from './Post.module.css'
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState([
     {
-      id: faker.string.uuid,
+      id: faker.string.uuid(),
       author: {
         name: faker.person.fullName(),
         picture: faker.image.avatar(),
@@ -43,7 +43,7 @@ export function Post({ author, content, publishedAt }) {
     setComments([
       ...comments,
       {
-        id: faker.string.uuid,
+        id: faker.string.uuid(),
         author: {
           name: faker.person.fullName(),
           picture: faker.image.avatar(),
