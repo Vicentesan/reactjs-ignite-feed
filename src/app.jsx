@@ -16,13 +16,12 @@ const posts = [
       role: faker.person.jobTitle(),
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: faker.lorem.words({ min: 2, max: 8 }) },
       {
         type: 'paragraph',
-        content:
-          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+        content: faker.lorem.text(),
       },
-      { type: 'link', content: '👉 jane.design/doctorcare' },
+      { type: 'link', content: faker.internet.url() },
     ],
     publishedAt: new Date('2024-02-22T20:00:00'),
   },
@@ -34,16 +33,12 @@ const posts = [
       role: faker.person.jobTitle(),
     },
     content: [
-      { type: 'paragraph', content: 'Fala pessoal 👋' },
+      { type: 'paragraph', content: faker.lorem.words({ min: 2, max: 8 }) },
       {
         type: 'paragraph',
-        content:
-          'Finalmente finalizei meu novo site/portfólio. Foi um baita desafio criar todo o design e codar na unha, mas consegui 💪🏻',
+        content: faker.lorem.text(),
       },
-      {
-        type: 'link',
-        content: 'Acesse e deixe seu feedback 👉 devonlane.design',
-      },
+      { type: 'link', content: faker.internet.url() },
     ],
     publishedAt: new Date('2024-02-20T23:00:00'),
   },
