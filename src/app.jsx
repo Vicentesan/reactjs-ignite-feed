@@ -1,6 +1,7 @@
 import { Header } from './components/Header'
 import { SideBar } from './components/SideBar'
 import { Post } from './components/Post'
+import { faker } from '@faker-js/faker'
 
 import styles from './app.module.css'
 
@@ -10,9 +11,9 @@ const posts = [
   {
     id: 1,
     author: {
-      picture: 'https://github.com/Muvias.png',
-      name: 'Vinicius Muvias',
-      role: 'Dev Front-End',
+      picture: faker.image.avatar(),
+      name: faker.person.fullName(),
+      role: faker.person.jobTitle(),
     },
     content: [
       { type: 'paragraph', content: 'Fala galeraa 👋' },
@@ -28,9 +29,9 @@ const posts = [
   {
     id: 2,
     author: {
-      picture: 'https://github.com/ruanjkz.png',
-      name: 'Ruan',
-      role: 'Dev Front-End',
+      picture: faker.image.avatar(),
+      name: faker.person.fullName(),
+      role: faker.person.jobTitle(),
     },
     content: [
       { type: 'paragraph', content: 'Fala pessoal 👋' },
