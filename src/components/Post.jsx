@@ -1,11 +1,29 @@
 import { Comment } from './Comment'
-import { format, formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
-
-import styles from './Post.module.css'
 import { Avatar } from './Avatar'
 
+import { format, formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { faker } from '@faker-js/faker'
+import { useState } from 'react'
+
+import styles from './Post.module.css'
+
 export function Post({ author, content, publishedAt }) {
+  const [comments, setComments] = useState([
+    {
+      id: faker.string.uuid,
+      author: {
+        name: faker.person.fullName(),
+        picture: faker.image.avatar(),
+      },
+      content: faker.lorem.text(),
+      likes: '20',
+      publishedAt: faker.date.recent(),
+    },
+  ])
+
+  const [newCommentText, setNewCommentText] = useState('')
+
   const publishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -18,6 +36,30 @@ export function Post({ author, content, publishedAt }) {
     locale: ptBR,
     addSuffix: true,
   })
+
+  function handleCreateNewComment(e) {
+    e.preventDefault()
+
+    setComments([
+      ...comments,
+      {
+        id: faker.string.uuid,
+        author: {
+          name: faker.person.fullName(),
+          picture: faker.image.avatar(),
+        },
+        content: newCommentText,
+        likes: '0',
+        publishedAt: new Date(),
+      },
+    ])
+
+    setNewCommentText('')
+  }
+
+  function handleNewCommentChange(e) {
+    setNewCommentText(e.target.value)
+  }
 
   return (
     <article className={styles.post}>
@@ -49,10 +91,15 @@ export function Post({ author, content, publishedAt }) {
         })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder="Deixe seu comentário" />
+        <textarea
+          name="comment"
+          placeholder="Deixe seu comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        />
 
         <footer>
           <button type="submit">Publicar</button>
@@ -60,15 +107,15 @@ export function Post({ author, content, publishedAt }) {
       </form>
 
       <div className={styles.commentList}>
-        <Comment
-          author={{
-            name: 'Vicente Sanchez',
-            picture: 'https://github.com/Vicentesan.png',
-          }}
-          publishedAt={new Date()}
-          content="Ficou muito top! Parabéns!"
-          likes="5"
-        />
+        {comments.map((comment) => (
+          <Comment
+            key={comment.id}
+            author={comment.author}
+            publishedAt={comment.publishedAt}
+            content={comment.content}
+            likes={comment.likes}
+          />
+        ))}
       </div>
     </article>
   )
