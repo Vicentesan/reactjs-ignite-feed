@@ -9,7 +9,7 @@ import './global.css'
 
 const posts = [
   {
-    id: 1,
+    id: faker.string.uuid,
     author: {
       picture: faker.image.avatar(),
       name: faker.person.fullName(),
@@ -27,7 +27,7 @@ const posts = [
     publishedAt: new Date('2024-02-22T20:00:00'),
   },
   {
-    id: 2,
+    id: faker.string.uuid,
     author: {
       picture: faker.image.avatar(),
       name: faker.person.fullName(),
