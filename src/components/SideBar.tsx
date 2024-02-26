@@ -2,21 +2,22 @@ import { PencilSimpleLine } from 'phosphor-react'
 import { Avatar } from './Avatar'
 
 import styles from './SideBar.module.css'
+import { Author } from '../app'
 
-export function SideBar(props) {
+export function SideBar({ author }: { author: Author }) {
   return (
     <aside className={styles.sidebar}>
       <img
         className={styles.cover}
-        src={props.author.cover}
-        alt={`${props.author.name} Profile Cover`}
+        src={author.cover}
+        alt={`${author.name} Profile Cover`}
       />
 
       <div className={styles.profile}>
-        <Avatar author={props.author} />
+        <Avatar author={author} />
 
-        <strong>{props.author.name}</strong>
-        <span>{props.author.role}</span>
+        <strong>{author.name}</strong>
+        <span>{author.role}</span>
       </div>
 
       <footer>

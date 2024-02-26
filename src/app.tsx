@@ -1,13 +1,20 @@
 import { Header } from './components/Header'
 import { SideBar } from './components/SideBar'
-import { Post } from './components/Post'
+import { Post, PostProps } from './components/Post'
 import { faker } from '@faker-js/faker'
 
 import styles from './app.module.css'
 
 import './global.css'
 
-const posts = [
+export interface Author {
+  name: string
+  role: string
+  picture: string
+  cover?: string
+}
+
+const posts: PostProps[] = [
   {
     id: faker.string.uuid(),
     author: {
@@ -23,7 +30,7 @@ const posts = [
       },
       { type: 'link', content: faker.internet.url() },
     ],
-    publishedAt: new Date('2024-02-22T20:00:00'),
+    publishedAt: new Date('2024-02-22 20:00:00'),
   },
   {
     id: faker.string.uuid(),
@@ -64,6 +71,7 @@ export function App() {
           {posts.map((post) => (
             <Post
               key={post.id}
+              id={post.id}
               author={post.author}
               content={post.content}
               publishedAt={post.publishedAt}
