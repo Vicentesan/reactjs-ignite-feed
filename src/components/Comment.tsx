@@ -5,6 +5,15 @@ import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
 import { Avatar } from './Avatar'
 import { useState } from 'react'
+import { Author } from '../app'
+
+interface CommentProps {
+  author: Author
+  content: string
+  likes: number
+  publishedAt: Date
+  onDeleteComment: (content: string) => void
+}
 
 export function Comment({
   content,
@@ -12,7 +21,7 @@ export function Comment({
   publishedAt,
   likes,
   onDeleteComment,
-}) {
+}: CommentProps) {
   const [likesCount, setLikesCount] = useState(likes)
 
   const publishedDateFormatted = format(
@@ -45,7 +54,10 @@ export function Comment({
           <header>
             <div className={styles.authorAndTime}>
               <strong>{author.name}</strong>
-              <time title={publishedDateFormatted} dateTime={publishedAt}>
+              <time
+                title={publishedDateFormatted}
+                dateTime={publishedAt.toISOString()}
+              >
                 {publishedDateRelativeToNow}
               </time>
             </div>
